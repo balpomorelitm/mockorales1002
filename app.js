@@ -441,6 +441,7 @@ function resetUI() {
             <span>Recording in progress…</span>
         </div>
     `;
+    document.getElementById('start-speaking-area').style.display = 'none';
     document.getElementById('playback-box').style.display = 'none';
     document.getElementById('rubric-box').style.display = 'none';
     document.getElementById('restart-area').style.display = 'none';
@@ -506,16 +507,34 @@ function onPreparationEnd() {
     document.getElementById('step-prep').classList.remove('active');
     document.getElementById('step-prep').classList.add('completed');
     document.getElementById('conn-1').classList.add('active');
-    document.getElementById('step-speak').classList.add('active');
 
-    // Shrink questions
-    document.getElementById('questions-box').classList.add('small-mode');
+    // Hide timer
+    document.getElementById('timer-container').style.display = 'none';
 
     // Make notes readonly
     document.getElementById('notes-box').classList.add('readonly');
     document.getElementById('notes-area').setAttribute('readonly', true);
 
-    // Update timer label
+    // Show the "Start Speaking" button
+    const speakBtn = document.getElementById('start-speaking-area');
+    speakBtn.style.display = 'block';
+    speakBtn.classList.add('fade-in');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startSpeaking() {
+    // Hide the start speaking button
+    document.getElementById('start-speaking-area').style.display = 'none';
+
+    // Activate speaking phase indicator
+    document.getElementById('step-speak').classList.add('active');
+
+    // Shrink questions
+    document.getElementById('questions-box').classList.add('small-mode');
+
+    // Show timer and update label
+    document.getElementById('timer-container').style.display = 'block';
     document.getElementById('timer-label').textContent = '🎤 SPEAKING TIME';
     document.getElementById('timer-label').className = 'timer-label speaking-label';
     document.getElementById('timer-progress').className = 'timer-ring-progress speaking';
