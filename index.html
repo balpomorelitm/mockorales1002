@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Oral Exam Practice – SPAN1002</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SPAN1002 Oral Practice</h1>
+        <p>Spanish II — Mock Oral Exam Trainer</p>
+    </header>
+    <div class="flag-bar"></div>
+
+    <!-- ===== HOME SCREEN ===== -->
+    <div id="home-screen">
+        <h2 class="section-title">📚 Choose a Unit</h2>
+        <p class="section-subtitle">Select a topic below to begin your oral exam practice session.</p>
+        <div class="units-grid" id="units-grid"></div>
+
+        <!-- Exam Mini Guide -->
+        <div class="exam-guide">
+            <h2 class="exam-guide-title">📋 Oral Test — Mini Guide</h2>
+            <div class="exam-guide-meta">
+                <div class="exam-guide-badge">7% of final grade</div>
+                <div class="exam-guide-badge">8–10 minutes</div>
+                <div class="exam-guide-badge">CPD-3.21 / CPD-3.22</div>
+            </div>
+            <p class="exam-guide-intro">As part of the SPAN1002 Spanish course, students will participate in an oral test that constitutes <strong>7%</strong> of their final grade. This test is designed to evaluate their conversational skills in Spanish, using the knowledge and topics covered during the course.</p>
+            <p class="exam-guide-intro">Students are required to sign up for a time slot, with registration beginning at 9:30 AM and concluding at 5:30 PM. The test will take place in rooms <strong>CPD-3.21</strong> and <strong>CPD-3.22</strong>.</p>
+
+            <h3>Test Format</h3>
+            <p class="exam-guide-intro">The oral test will be conducted at the end of the semester and will involve a one-on-one conversation with one of the course instructors. The test will last approximately 8 to 10 minutes and will follow a structure similar to the DELE examination:</p>
+
+            <div class="exam-guide-phase">
+                <div class="exam-guide-phase-num">1</div>
+                <div>
+                    <h4>Warming Up <span class="exam-guide-time">2 minutes</span></h4>
+                    <p>Introductory questions to ease into the conversation.</p>
+                    <ul>
+                        <li>¿Cómo te llamas y de dónde eres?</li>
+                        <li>¿Cómo te sientes hoy?</li>
+                        <li>¿Qué te gusta hacer en tu tiempo libre?</li>
+                        <li>¿Por qué estudias español?</li>
+                        <li>¿Qué te gusta más y menos del español?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-guide-phase">
+                <div class="exam-guide-phase-num">2</div>
+                <div>
+                    <h4>Topic Preparation <span class="exam-guide-time">2 minutes</span></h4>
+                    <p>Students will be given a randomly selected topic from the course content to prepare briefly.</p>
+                    <ul>
+                        <li>"Describe tu restaurante favorito y tu plato preferido de allí."</li>
+                        <li>"Háblanos sobre tu barrio ideal. ¿Cómo sería?"</li>
+                        <li>"¿Qué habilidades tienes? Habla sobre un día en que tus habilidades fueron importantes."</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-guide-phase">
+                <div class="exam-guide-phase-num">3</div>
+                <div>
+                    <h4>Short Presentation <span class="exam-guide-time">2 minutes</span></h4>
+                    <p>Students will present their thoughts or arguments about the selected topic.</p>
+                    <ul>
+                        <li>"Mi restaurante favorito es…, me gusta porque…, y me gusta pedir…"</li>
+                        <li>"En mi barrio ideal hay…, me gusta porque…, tiene que tener…"</li>
+                        <li>"Yo sé… Una vez tuve que…, mis habilidades de… fueron muy importantes porque…"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-guide-phase">
+                <div class="exam-guide-phase-num">4</div>
+                <div>
+                    <h4>Conversation <span class="exam-guide-time">2 minutes</span></h4>
+                    <p>The examiner and the student will engage in a conversation about the topic, with follow-up questions and discussion of related points.</p>
+                    <ul>
+                        <li>"¿Qué ingredientes tiene ese plato? ¿Lo has cocinado alguna vez en tu casa?"</li>
+                        <li>"¿Qué actividades puedes hacer en ese barrio? ¿Cómo son los servicios y la ubicación?"</li>
+                        <li>"¿Cómo aprendiste esas habilidades?…"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRACTICE SCREEN ===== -->
+    <div id="practice-screen">
+        <button class="back-btn" onclick="goHome()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+            Back to Units
+        </button>
+
+        <div class="practice-header">
+            <h2 id="practice-title"></h2>
+            <p id="practice-topic"></p>
+        </div>
+
+        <!-- Phase indicator -->
+        <div class="phase-steps">
+            <div class="phase-step" id="step-prep">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2H4a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2z"/><path d="M6 6h4M6 9h2"/></svg>
+                Preparation
+            </div>
+            <div class="phase-connector" id="conn-1"></div>
+            <div class="phase-step" id="step-speak">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v4a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M5 8a7 7 0 0014 0"/><path d="M12 15v3m-3 0h6"/></svg>
+                Speaking
+            </div>
+            <div class="phase-connector" id="conn-2"></div>
+            <div class="phase-step" id="step-review">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="7"/><path d="M6 8l2 2 4-4"/></svg>
+                Review
+            </div>
+        </div>
+
+        <!-- Mic permission banner -->
+        <div class="mic-banner" id="mic-banner" style="display:none;"></div>
+
+        <!-- Unit info -->
+        <div class="unit-info-box fade-in" id="unit-info-box"></div>
+
+        <!-- Start buttons -->
+        <div class="start-area" id="start-area">
+            <p class="start-hint" style="margin-bottom:1rem;">Choose a question set to begin your practice session.</p>
+            <div class="version-buttons">
+                <button class="btn-start btn-version btn-v1" onclick="startPreparation(1)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,3 18,11 6,19"/></svg>
+                    Start — Version 1
+                </button>
+                <button class="btn-start btn-version btn-v2" id="btn-start-v2" onclick="startPreparation(2)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,3 18,11 6,19"/></svg>
+                    Start — Version 2
+                </button>
+            </div>
+            <p class="start-hint">You will have 2 minutes to prepare, then 2 minutes to speak.</p>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-container" id="timer-container">
+            <div class="timer-ring-wrapper">
+                <svg class="timer-ring" viewBox="0 0 140 140">
+                    <circle class="timer-ring-bg" cx="70" cy="70" r="65"/>
+                    <circle class="timer-ring-progress" id="timer-progress" cx="70" cy="70" r="65"/>
+                </svg>
+                <div class="timer-text" id="timer-text">2:00</div>
+            </div>
+            <div class="timer-label" id="timer-label">⏳ PREPARATION TIME</div>
+        </div>
+
+        <!-- Questions -->
+        <div class="questions-box" id="questions-box">
+            <h3>📝 Questions – Answer all of them</h3>
+            <div id="questions-list"></div>
+        </div>
+
+        <!-- Notes -->
+        <div class="notes-box" id="notes-box">
+            <h3>📒 Your Notes</h3>
+            <textarea id="notes-area" placeholder="Write your preparation notes here... You can read these during the speaking phase."></textarea>
+        </div>
+
+        <!-- Recording indicator -->
+        <div class="recording-box" id="recording-box">
+            <h3>🎙️ Recording</h3>
+            <div class="rec-indicator">
+                <div class="rec-dot"></div>
+                <span>Recording in progress…</span>
+            </div>
+        </div>
+
+        <!-- Playback -->
+        <div class="playback-box" id="playback-box">
+            <h3>🔊 Listen to Your Recording</h3>
+            <audio id="audio-player" controls></audio>
+            <br>
+            <button class="download-btn" id="download-btn" onclick="downloadRecording()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v10m0 0l-3-3m3 3l3-3"/><path d="M2 13h12"/></svg>
+                Download Recording
+            </button>
+        </div>
+
+        <!-- Rubric -->
+        <div class="rubric-box" id="rubric-box">
+            <h3>📊 Evaluation Criteria (Rubric)</h3>
+            <p style="font-size:0.88rem; color:var(--gray-500); margin-bottom:1rem;">Listen to your recording and rate yourself honestly using the official exam rubric below.</p>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D/F</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pronunciation &amp; Intonation <span class="rubric-pct">15%</span></td>
+                        <td>Pronunciation is clear in general; intonation patterns are consistently correct.</td>
+                        <td>Pronunciation is generally clear with some errors; intonation patterns are mostly correct.</td>
+                        <td>Pronunciation is difficult to understand, with noticeable errors; there are issues with the intonation.</td>
+                        <td>Pronunciation frequently is too difficult to understand; significant problems with intonation.</td>
+                    </tr>
+                    <tr>
+                        <td>Fluency <span class="rubric-pct">15%</span></td>
+                        <td>Speaks with little hesitation; maintains an appropriate pace.</td>
+                        <td>Fluency with hesitation; pace is sometimes appropriate.</td>
+                        <td>Frequent pauses and hesitations; tempo may be uneven.</td>
+                        <td>Constant pauses that significantly hinder communication.</td>
+                    </tr>
+                    <tr>
+                        <td>Vocabulary <span class="rubric-pct">15%</span></td>
+                        <td>Uses an appropriate range of vocabulary for a beginner; minor inaccuracies.</td>
+                        <td>Adequate vocabulary with some inaccuracies. Occasional errors might occur.</td>
+                        <td>Limited vocabulary: errors are noticeable and can hinder understanding.</td>
+                        <td>Very limited vocabulary; frequent misuse of words.</td>
+                    </tr>
+                    <tr>
+                        <td>Grammar &amp; Structure <span class="rubric-pct">15%</span></td>
+                        <td>Shows a basic understanding of grammar with minimal errors, sentences are well structured.</td>
+                        <td>Some grammatical control with occasional errors. Some sentences can be odd for a native speaker but do not hinder communication.</td>
+                        <td>Noticeable or frequent grammatical errors. Sentence structure can also hinder communication.</td>
+                        <td>Frequent grammatical errors; difficulty in forming basic structures.</td>
+                    </tr>
+                    <tr>
+                        <td>Comprehension <span class="rubric-pct">10%</span></td>
+                        <td>Understands basic questions/comments and responds appropriately.</td>
+                        <td>Generally understands with some misinterpretations; responses are mostly appropriate.</td>
+                        <td>Difficulty in understanding basic questions; responses are somewhat appropriate.</td>
+                        <td>Frequent misunderstandings; responses are often inappropriate or off topic.</td>
+                    </tr>
+                    <tr>
+                        <td>Engagement <span class="rubric-pct">15%</span></td>
+                        <td>Participates actively in conversation with initiative.</td>
+                        <td>Responds to questions and engages in conversation.</td>
+                        <td>Limited interaction; responds to questions with minimal engagement.</td>
+                        <td>Very limited participation, struggles to maintain basic conversation.</td>
+                    </tr>
+                    <tr>
+                        <td>Coherence <span class="rubric-pct">15%</span></td>
+                        <td>Coherently expresses ideas and thoughts; messages are logical always or most of the times.</td>
+                        <td>Some ideas may be unclear or not well connected.</td>
+                        <td>Frequently struggles to express ideas coherently; message is often confusing or disconnected.</td>
+                        <td>Total lack of coherence; message is unclear and very difficult to follow.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Restart -->
+        <div class="restart-area" id="restart-area" style="display:none;">
+            <button class="btn-restart" onclick="resetPractice()">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                Try Again
+            </button>
+            <br><br>
+            <button class="btn-restart" style="background:var(--gray-500);" onclick="goHome()">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 4 4-7 7m-4-4l-2 2m0 0l4 4"/></svg>
+                Choose Another Unit
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        SPAN1002 · Spanish II · Oral Exam Practice · The University of Hong Kong
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
